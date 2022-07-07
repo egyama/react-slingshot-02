@@ -1,29 +1,28 @@
 version: 2.1
-
+defaults: &defaults
+  docker:
+    - image: cimg/node:18.4.0
 jobs:
   build:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *defaults
     steps:
       - checkout
       - run: npm i
       - run: npm run lint
   test:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *defaults
     steps:
       - checkout
       - run: npm i
       - run: npm run test
   analyze:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *defaults
     steps:
       - checkout
-      - run: npm audit
+      - run: npm run audit
 
 workflows:
-  my_workflow:
+  my_wf:
     jobs:
       - build
       - test:
