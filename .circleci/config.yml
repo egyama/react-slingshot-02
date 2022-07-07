@@ -21,10 +21,11 @@ jobs:
 
 workflows:
   default:
-    - build
-    - test:
-        requires:
-          - build
-    - analyze:
-        requires:
-          - test
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - analyze:
+          requires:
+            - test
