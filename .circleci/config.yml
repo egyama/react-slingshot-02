@@ -20,7 +20,10 @@ jobs:
     steps:
       - checkout
       - run: npm run audit
-
+      - run:
+          name: on error
+          command: echo "Hello Error!"
+          when: on_fail
 workflows:
   my_wf:
     jobs:
