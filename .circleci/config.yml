@@ -7,11 +7,13 @@ jobs:
     <<: *default
     steps:
       - checkout
+      - run: npm i
       - run:  npm run lint
   test:
     <<: *default
     steps:
       - checkout
+      - run: npm i
       - run:  npm run test
   analyze:
     <<: *default
